@@ -2,7 +2,6 @@ package one.digitalinnovation.personapi.entity;
 
 import lombok.*;
 import one.digitalinnovation.personapi.enums.PhoneType;
-
 import javax.persistence.*;
 
 @Entity

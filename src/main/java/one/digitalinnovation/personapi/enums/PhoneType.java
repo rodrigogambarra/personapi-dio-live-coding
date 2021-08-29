@@ -1,7 +1,9 @@
 package one.digitalinnovation.personapi.enums;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@AllArgsConstructor
 @Getter
 public enum PhoneType {
 
@@ -10,9 +12,5 @@ public enum PhoneType {
     COMMERCIAL("Commercial");
 
     private String description;
-
-    PhoneType(String description){
-        this.description = description;
-    }
 
 }
