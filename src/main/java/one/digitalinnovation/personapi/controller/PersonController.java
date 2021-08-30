@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/people")
@@ -21,10 +22,10 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @ApiOperation(value = "Return list if people")
+    @ApiOperation(value = "List all people")
     @GetMapping
-    public String listPerson(){
-        return "Lista de pessoas";
+    public List<PersonDTO> listAll(){
+        return personService.listAll();
     }
 
     @ApiOperation(value = "Create person")
