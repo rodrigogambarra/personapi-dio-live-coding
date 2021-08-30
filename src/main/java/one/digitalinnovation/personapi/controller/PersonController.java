@@ -1,12 +1,14 @@
 package one.digitalinnovation.personapi.controller;
 
 import io.swagger.annotations.ApiOperation;
-import one.digitalinnovation.personapi.dto.MessageResponseDTO;
-import one.digitalinnovation.personapi.entity.Person;
+import one.digitalinnovation.personapi.dto.request.PersonDTO;
+import one.digitalinnovation.personapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/people")
@@ -19,10 +21,16 @@ public class PersonController {
         this.personService = personService;
     }
 
+    @ApiOperation(value = "Return list if people")
+    @GetMapping
+    public String listPerson(){
+        return "Lista de pessoas";
+    }
+
     @ApiOperation(value = "Create person")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createPerson(@RequestBody Person person){
-        return personService.createPerson(person);
+    public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO){
+        return personService.createPerson(personDTO);
     }
 }
